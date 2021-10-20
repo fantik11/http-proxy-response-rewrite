@@ -20,6 +20,10 @@ module.exports = function modifyResponse(res, contentEncoding, callback) {
             unzip = zlib.Inflate();
             zip = zlib.Deflate();
             break;
+        case 'br':
+            unzip = zlib.createBrotliDecompress()
+            zip = zlib.createBrotliCompress();
+            break;
     }
 
     // The cache response method can be called after the modification.
